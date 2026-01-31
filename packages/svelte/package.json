@@ -1,0 +1,51 @@
+{
+  "name": "@pixel-loader/svelte",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Svelte wrapper for PixelLoader web component",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "svelte": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check ./src",
+    "format": "biome format --write ./src",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "svelte",
+    "web-components",
+    "lit",
+    "loading-indicator",
+    "loader",
+    "animation"
+  ],
+  "peerDependencies": {
+    "svelte": "^3.0.0 || ^4.0.0 || ^5.0.0"
+  },
+  "dependencies": {
+    "@pixel-loader/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.30",
+    "svelte": "^4.2.19",
+    "svelte-check": "^3.8.6",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
