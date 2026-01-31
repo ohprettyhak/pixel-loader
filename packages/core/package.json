@@ -1,0 +1,45 @@
+{
+  "name": "@pixel-loader/core",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Core LitElement web component for 3x3 loading indicator",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome check ./src",
+    "format": "biome format --write ./src",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "web-components",
+    "lit",
+    "loading-indicator",
+    "loader",
+    "animation"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "lit": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.30",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

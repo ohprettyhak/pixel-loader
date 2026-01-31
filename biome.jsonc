@@ -1,0 +1,32 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": [
+    "ultracite/biome/core",
+    "ultracite/biome/react",
+    "ultracite/biome/next",
+    "ultracite/biome/solid",
+    "ultracite/biome/vue",
+    "ultracite/biome/svelte"
+  ],
+  "overrides": [
+    {
+      "includes": ["examples/**/*"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noReactSpecificProps": "off"
+          },
+          "correctness": {
+            "noUnusedVariables": "warn"
+          },
+          "a11y": {
+            "useButtonType": "off"
+          },
+          "performance": {
+            "useSolidForComponent": "off"
+          }
+        }
+      }
+    }
+  ]
+}
