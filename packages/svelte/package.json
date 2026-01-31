@@ -18,8 +18,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
+    "build": "bunchee",
+    "dev": "bunchee --watch",
     "typecheck": "tsc --noEmit",
     "lint": "biome check ./src",
     "format": "biome format --write ./src",
