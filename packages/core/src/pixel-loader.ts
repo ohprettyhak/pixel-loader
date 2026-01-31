@@ -168,9 +168,3 @@ export class PixelLoader extends LitElement {
     `;
   }
 }
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "pixel-loader": PixelLoader;
-  }
-}
