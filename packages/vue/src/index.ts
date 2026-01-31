@@ -6,16 +6,20 @@ export interface PixelLoaderProps {
   preset?: PresetName;
   presetDelays?: string;
   presetDuration?: number;
+  delayPattern?: number[];
   size?: number;
   color?: string;
   borderRadius?: number;
   isAnimating?: boolean;
+  shadowBlur?: number;
+  shadowColor?: string;
 }
 
 export interface PixelLoaderElement extends HTMLElement {
   preset?: PresetName;
   presetDelays?: string;
   presetDuration?: number;
+  delayPattern?: number[];
   size?: number;
   color?: string;
   borderRadius?: number;

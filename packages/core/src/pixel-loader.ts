@@ -71,8 +71,11 @@ export class PixelLoader extends LitElement {
   @property({ type: Number, attribute: "preset-duration" })
   presetDuration: number = presets.diagonal.duration;
 
+  @property({ type: Array, attribute: false })
+  delayPattern?: number[];
+
   @property({ type: Number })
-  size = 64;
+  size?: number;
 
   @property({ type: String })
   color = "#3b82f6";
@@ -83,20 +86,31 @@ export class PixelLoader extends LitElement {
   @property({ type: Boolean, attribute: "is-animating" })
   isAnimating = true;
 
+  @property({ type: Number })
+  shadowBlur = 0;
+
+  @property({ type: String })
+  shadowColor = "";
+
   static styles = css`
     :host {
       display: block;
       contain: content;
+      width: 100%;
+      height: 100%;
     }
 
     .loader {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
+      width: 100%;
+      height: 100%;
     }
 
     .cell {
-      transition: opacity 0.3s ease-in-out;
+      transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      box-shadow: 0 0 var(--shadow-blur) var(--shadow-color);
     }
 
     @keyframes animate {
@@ -126,33 +140,31 @@ export class PixelLoader extends LitElement {
   }
 
   render() {
-    const delays = this.presetDelays.split(",").map(Number);
+    const delays =
+      this.delayPattern ?? this.presetDelays.split(",").map(Number);
     const duration = this.presetDuration;
+    const loaderStyle = this.size
+      ? `width: ${this.size}px; height: ${this.size}px;`
+      : "";
 
     return html`
-      <div class="loader">
+      <div class="loader" style="${loaderStyle}">
         ${Array.from({ length: 9 }).map(
           (_, index) => html`
             <div
               class="cell ${this.isAnimating ? "animating" : ""}"
               style="
-                width: ${this.size}px;
-                height: ${this.size}px;
                 background-color: ${this.color};
                 border-radius: ${this.borderRadius}px;
-                --delay: ${delays[index]}ms;
+                --delay: ${delays[index % delays.length]}ms;
                 --duration: ${duration}ms;
+                --shadow-blur: ${this.shadowBlur}px;
+                --shadow-color: ${this.shadowColor || this.color};
               "
             ></div>
           `
         )}
       </div>
     `;
-  }
-}
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "pixel-loader": PixelLoader;
   }
 }
