@@ -1,7 +1,7 @@
 import type { JSX } from "solid-js";
 import type { PixelLoaderProps } from "./index";
 
-export function PixelLoader(props: PixelLoaderProps) {
+export const PixelLoader = (props: PixelLoaderProps) => {
   const {
     preset,
     size,
@@ -27,4 +27,4 @@ export function PixelLoader(props: PixelLoaderProps) {
   } as JSX.IntrinsicElements["pixel-loader"];
 
   return <pixel-loader {...attributes} />;
-}
+};
