@@ -1,4 +1,3 @@
-// biome-ignore lint/performance/noBarrelFile: This is the public API for the library
 export { css, html } from "lit";
 
 export { customElement, property } from "lit/decorators.js";

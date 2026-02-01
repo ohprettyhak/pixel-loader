@@ -1,6 +1,5 @@
+import type { SvelteComponent } from "svelte";
 import type { PresetName } from "@pixel-loader/core";
-import { presets } from "@pixel-loader/core";
-import PixelLoader from "./PixelLoader.svelte";
 
 export interface PixelLoaderProps {
   preset?: PresetName;
@@ -15,6 +14,11 @@ export interface PixelLoaderProps {
   shadowColor?: string;
 }
 
-export { PixelLoader };
+export default class PixelLoader extends SvelteComponent<PixelLoaderProps> {
+  $$prop_def: PixelLoaderProps;
+  $$events_def: {};
+  $$slot_def: {};
+}
+
 export type { PresetName };
-export { presets };
+export { presets } from "@pixel-loader/core";
