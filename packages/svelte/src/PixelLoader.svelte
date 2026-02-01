@@ -1,16 +1,16 @@
 <script lang="ts">
-  import type { PresetName } from "@pixel-loader/core";
+import type { PresetName } from "@pixel-loader/core";
 
-  export let preset: PresetName = "diagonal";
-  export let presetDelays: string | undefined = undefined;
-  export let presetDuration: number | undefined = undefined;
-  export let delayPattern: number[] | undefined = undefined;
-  export let size: number | undefined = undefined;
-  export let color = "#3b82f6";
-  export let borderRadius = 0;
-  export let isAnimating = true;
-  export let shadowBlur = 0;
-  export let shadowColor = "";
+export const preset: PresetName = "diagonal";
+export const presetDelays: string | undefined = undefined;
+export const presetDuration: number | undefined = undefined;
+export const delayPattern: number[] | undefined = undefined;
+export const size: number | undefined = undefined;
+export const color = "#3b82f6";
+export const borderRadius = 0;
+export const isAnimating = true;
+export const shadowBlur = 0;
+export const shadowColor = "";
 </script>
 
 <pixel-loader

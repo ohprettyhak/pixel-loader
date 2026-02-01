@@ -52,5 +52,5 @@ biome.json
 Thumbs.db
 
 # AI
-.sisyphus
-.omw
+.sisyphus/
+.omc/
