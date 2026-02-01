@@ -3,10 +3,7 @@
   "extends": [
     "ultracite/biome/core",
     "ultracite/biome/react",
-    "ultracite/biome/next",
-    "ultracite/biome/solid",
-    "ultracite/biome/vue",
-    "ultracite/biome/svelte"
+    "ultracite/biome/next"
   ],
   "overrides": [
     {
