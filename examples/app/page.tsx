@@ -14,7 +14,7 @@ export default function Home() {
   const preset = presets[selectedPreset];
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-8 bg-gray-900 p-8">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-8 bg-neutral-900 p-8">
       <h1 className="mb-4 font-bold text-4xl text-white">
         Pixel Loader Examples
       </h1>
