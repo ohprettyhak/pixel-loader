@@ -118,28 +118,10 @@ export class PixelLoader extends LitElement {
     .cell::before {
       content: "";
       position: absolute;
-      inset: -50%;
-      background: var(--shadow-color);
-      filter: blur(var(--shadow-blur));
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-      z-index: -1;
-      border-radius: inherit;
-    }
-
-    .cell::after {
-      content: "";
-      position: absolute;
       inset: 0;
       background-color: var(--cell-color);
       border-radius: var(--cell-radius);
-      z-index: 1;
-    }
-
-    .cell.animating::before {
-      opacity: calc(var(--glow-opacity, 0.4) * var(--cell-opacity, 1));
-      animation: animate-glow var(--duration) ease-in-out infinite;
-      animation-delay: var(--delay);
+      filter: drop-shadow(0 0 var(--shadow-blur) var(--shadow-color));
     }
 
     @keyframes animate {
@@ -151,16 +133,7 @@ export class PixelLoader extends LitElement {
       }
     }
 
-    @keyframes animate-glow {
-      0%, 100% {
-        --cell-opacity: 0.5;
-      }
-      50% {
-        --cell-opacity: 1;
-      }
-    }
-
-    .cell.animating::after {
+    .cell.animating::before {
       animation: animate var(--duration) ease-in-out infinite;
       animation-delay: var(--delay);
     }
