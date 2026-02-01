@@ -18,7 +18,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsup",
+    "build": "tsup && cp src/index.d.ts dist/index.d.ts",
     "dev": "tsup --watch",
     "typecheck": "tsc --noEmit",
     "lint": "biome check ./src",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.19.30",
-    "svelte": "^4.2.19",
+    "svelte": "^4.2.20",
     "svelte-check": "^3.8.6",
     "typescript": "^5.9.3"
   },

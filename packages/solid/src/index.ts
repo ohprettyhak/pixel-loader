@@ -28,10 +28,12 @@ export interface PixelLoaderElement extends HTMLElement {
   shadowColor?: string;
 }
 
-declare global {
-  interface JSX {
-    IntrinsicElements: {
-      "pixel-loader": PixelLoaderElement;
-    };
+declare module "solid-js" {
+  namespace JSX {
+    interface IntrinsicElements {
+      "pixel-loader": PixelLoaderProps;
+    }
   }
 }
+
+export { PixelLoader } from "./Component";

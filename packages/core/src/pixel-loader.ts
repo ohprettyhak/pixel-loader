@@ -95,7 +95,6 @@ export class PixelLoader extends LitElement {
   static styles = css`
     :host {
       display: block;
-      contain: content;
       width: 100%;
       height: 100%;
     }
@@ -106,11 +105,38 @@ export class PixelLoader extends LitElement {
       gap: 0;
       width: 100%;
       height: 100%;
+      padding: calc(var(--shadow-blur) * 0.5);
+      box-sizing: border-box;
     }
 
     .cell {
-      transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      box-shadow: 0 0 var(--shadow-blur) var(--shadow-color);
+      position: relative;
+    }
+
+    .cell::before {
+      content: "";
+      position: absolute;
+      inset: -100%;
+      background: radial-gradient(
+        circle at center,
+        var(--shadow-color) 0%,
+        transparent 70%
+      );
+      filter: blur(calc(var(--shadow-blur) * 0.5));
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 0;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .cell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: var(--cell-color);
+      border-radius: var(--cell-radius);
+      z-index: 1;
     }
 
     @keyframes animate {
@@ -122,7 +148,21 @@ export class PixelLoader extends LitElement {
       }
     }
 
-    .cell.animating {
+    @keyframes animate-glow {
+      0%, 100% {
+        opacity: 0.05;
+      }
+      50% {
+        opacity: 0.15;
+      }
+    }
+
+    .cell.animating::before {
+      animation: animate-glow var(--duration) ease-in-out infinite;
+      animation-delay: var(--delay);
+    }
+
+    .cell.animating::after {
       animation: animate var(--duration) ease-in-out infinite;
       animation-delay: var(--delay);
     }
@@ -154,12 +194,13 @@ export class PixelLoader extends LitElement {
             <div
               class="cell ${this.isAnimating ? "animating" : ""}"
               style="
-                background-color: ${this.color};
-                border-radius: ${this.borderRadius}px;
+                --cell-color: ${this.color};
+                --cell-radius: ${this.borderRadius}px;
                 --delay: ${delays[index % delays.length]}ms;
                 --duration: ${duration}ms;
                 --shadow-blur: ${this.shadowBlur}px;
                 --shadow-color: ${this.shadowColor || this.color};
+                --glow-opacity: ${this.shadowBlur > 0 ? 0.4 : 0};
               "
             ></div>
           `
