@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsup && cp src/index.d.ts dist/index.d.ts",
     "dev": "tsup --watch",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "biome check ./src",
     "format": "biome format --write ./src",
     "clean": "rm -rf dist"
