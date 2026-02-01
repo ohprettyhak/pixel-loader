@@ -110,7 +110,7 @@ export class PixelLoader extends LitElement {
 
     .cell {
       transition: opacity 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-      box-shadow: 0 0 var(--shadow-blur) var(--shadow-color);
+      box-shadow: 0 0 var(--shadow-blur) calc(var(--shadow-blur) * 0.5) var(--shadow-color);
     }
 
     @keyframes animate {
