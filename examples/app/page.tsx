@@ -101,7 +101,6 @@ export default function Home() {
               <PixelLoader
                 color="#3b82f6"
                 preset="diagonal"
-                shadowBlur={20}
                 shadowColor="#3b82f6"
                 size={66}
               />
