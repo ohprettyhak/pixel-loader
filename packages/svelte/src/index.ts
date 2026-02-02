@@ -1,4 +1,4 @@
-import PixelLoader from "./PixelLoader.svelte";
+import PixelLoader from "./pixel-loader.svelte";
 
 export interface PixelLoaderProps {
   preset?:

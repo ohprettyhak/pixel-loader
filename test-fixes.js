@@ -6,12 +6,12 @@
  * 2. Svelte: No runtime errors
  */
 
-const http = require("http");
+const http = require("node:http");
 
 const VUE_PORT = 5173;
 const SVELTE_PORT = 5174;
 
-async function testServer(port, name) {
+function testServer(port, name) {
   return new Promise((resolve) => {
     http
       .get(`http://localhost:${port}`, (res) => {
@@ -23,7 +23,7 @@ async function testServer(port, name) {
 
         res.on("end", () => {
           const hasAppDiv = data.includes('<div id="app"></div>');
-          const hasCoreImport = data.includes("@pixel-loader/core");
+          const _hasCoreImport = data.includes("@pixel-loader/core");
           const hasViteClient = data.includes("@vite/client");
 
           console.log(`\n✅ ${name} (port ${port}):`);
@@ -57,7 +57,7 @@ async function main() {
   const vueResult = await testServer(VUE_PORT, "Vue Example");
   const svelteResult = await testServer(SVELTE_PORT, "Svelte Example");
 
-  console.log("\n" + "=".repeat(60));
+  console.log(`\n${"=".repeat(60)}`);
   console.log("SUMMARY");
   console.log("=".repeat(60));
   console.log(

@@ -19,6 +19,6 @@ export interface PixelLoaderProps {
 
 export default class PixelLoader extends SvelteComponent<PixelLoaderProps> {
   $$prop_def: PixelLoaderProps;
-  $$events_def: {};
-  $$slot_def: {};
+  $$events_def: Record<string, never>;
+  $$slot_def: Record<string, never>;
 }

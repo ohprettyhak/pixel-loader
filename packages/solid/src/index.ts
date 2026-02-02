@@ -25,6 +25,7 @@ export interface PixelLoaderElement extends HTMLElement {
 }
 
 declare module "solid-js" {
+  // biome-ignore lint/style/noNamespace: JSX module augmentation requires namespace
   namespace JSX {
     interface IntrinsicElements {
       "pixel-loader": PixelLoaderProps;
@@ -32,4 +33,4 @@ declare module "solid-js" {
   }
 }
 
-export { PixelLoader } from "./Component";
+export { PixelLoader } from "./component";
