@@ -2,17 +2,8 @@ import type { JSX } from "solid-js";
 import type { PixelLoaderProps } from "./index";
 
 export const PixelLoader = (props: PixelLoaderProps) => {
-  const {
-    preset,
-    size,
-    color,
-    borderRadius,
-    isAnimating,
-    shadowBlur,
-    shadowColor,
-    presetDuration,
-    delayPattern,
-  } = props;
+  const { size, color, borderRadius, isAnimating, delayPattern, preset } =
+    props;
 
   const attributes: JSX.IntrinsicElements["pixel-loader"] = {
     preset,
@@ -20,9 +11,6 @@ export const PixelLoader = (props: PixelLoaderProps) => {
     color,
     "border-radius": borderRadius,
     "is-animating": isAnimating,
-    "shadow-blur": shadowBlur,
-    "shadow-color": shadowColor,
-    "preset-duration": presetDuration,
     "delay-pattern": delayPattern ? JSON.stringify(delayPattern) : undefined,
   } as JSX.IntrinsicElements["pixel-loader"];
 

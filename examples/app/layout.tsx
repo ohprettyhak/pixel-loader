@@ -3,7 +3,8 @@ import "./globals.css";
 import type { Metadata } from "next";
 import type { PropsWithChildren } from "react";
 import { Toaster } from "sonner";
-import { AliceSerif } from "./fonts";
+import { twMerge } from "tailwind-merge";
+import { AliceSerif, GeistSans } from "./fonts";
 
 export const metadata: Metadata = {
   title: "pixel-loader",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
-      <body className={AliceSerif.className}>
+      <body className={twMerge(GeistSans.variable, AliceSerif.variable)}>
         <main className="mx-auto w-full max-w-4xl p-4 pt-12 md:p-8 md:pt-24">
           {children}
         </main>

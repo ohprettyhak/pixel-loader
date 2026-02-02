@@ -99,14 +99,12 @@ See the [`/examples`](./examples) directory for a complete React/Next.js impleme
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `preset` | `PresetName` | `"diagonal"` | Animation preset to use |
+| `preset` | `"wave-lr" \| "wave-rl" \| "wave-tb" \| "wave-bt" \| "diagonal" \| "center-out" \| "spiral" \| "corners"` | `"diagonal"` | Animation preset to use |
 | `size` | `number` | `66` | Size in pixels |
 | `color` | `string` | `"#333"` | Cell color |
 | `borderRadius` | `number` | `4` | Cell border radius |
 | `isAnimating` | `boolean` | `true` | Animation play state |
-| `shadowBlur` | `number` | `0` | Shadow blur amount |
-| `shadowColor` | `string` | - | Shadow color |
-| `presetDuration` | `number` | `400` | Animation duration (ms) |
+| `isAnimating` | `boolean` | `true` | Animation play state |
 | `delayPattern` | `number[]` | - | Custom delay pattern (9 values) |
 
 ## Animation Presets

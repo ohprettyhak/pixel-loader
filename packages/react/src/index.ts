@@ -1,19 +1,26 @@
 import { createComponent } from "@lit/react";
-import type { PresetName } from "@pixel-loader/core";
-import { PixelLoader as PixelLoaderElement, presets } from "@pixel-loader/core";
+import type { Frames } from "@pixel-loader/core";
+import { PixelLoader as PixelLoaderElement } from "@pixel-loader/core";
 import React from "react";
 
 export interface PixelLoaderProps {
-  preset?: PresetName;
-  presetDelays?: string;
-  presetDuration?: number;
+  preset?:
+    | "wave-lr"
+    | "wave-rl"
+    | "wave-tb"
+    | "wave-bt"
+    | "diagonal"
+    | "center-out"
+    | "spiral"
+    | "corners";
   delayPattern?: number[];
   size?: number;
   color?: string;
   borderRadius?: number;
   isAnimating?: boolean;
-  shadowBlur?: number;
-  shadowColor?: string;
+  frames?: Frames;
+  frameIndex?: number;
+  isPlaying?: boolean;
 }
 
 export const PixelLoader = createComponent({
@@ -22,5 +29,4 @@ export const PixelLoader = createComponent({
   react: React,
 });
 
-export type { PresetName };
-export { presets };
+export type { Frames };
