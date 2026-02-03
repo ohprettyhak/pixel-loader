@@ -14,14 +14,16 @@ const FRAMEWORK_DISPLAY_NAMES: Record<Framework, string> = {
 };
 
 interface FrameworkSidebarProps {
-  onFrameworkChange: (framework: Framework) => void;
   activeFramework: Framework;
+  onFrameworkChange: (framework: Framework) => void;
 }
 
-export function FrameworkSidebar({
-  onFrameworkChange,
+export const FrameworkSidebar = ({
   activeFramework,
-}: FrameworkSidebarProps) {
+  onFrameworkChange,
+}: FrameworkSidebarProps) => {
+  const isActive = (framework: Framework) => activeFramework === framework;
+
   return (
     <>
       {/* Mobile/Tablet: Horizontal tabs */}
@@ -30,7 +32,7 @@ export function FrameworkSidebar({
           <button
             className={twMerge(
               "cursor-pointer rounded-md px-3 py-1.5 font-medium font-mono text-xs transition-colors",
-              activeFramework === framework
+              isActive(framework)
                 ? "bg-text-primary text-white"
                 : "text-text-secondary hover:bg-neutral-100"
             )}
@@ -50,7 +52,7 @@ export function FrameworkSidebar({
             <button
               className={twMerge(
                 "cursor-pointer rounded-md px-3 py-1.5 text-left font-medium font-mono text-xs transition-colors",
-                activeFramework === framework
+                isActive(framework)
                   ? "bg-text-primary text-white"
                   : "text-text-secondary hover:bg-neutral-100"
               )}
@@ -65,16 +67,16 @@ export function FrameworkSidebar({
       </aside>
     </>
   );
-}
+};
 
-export function useFrameworkState(): [
+export const useFrameworkState = (): [
   Framework,
   (framework: Framework) => void,
-] {
+] => {
   const [framework, setFramework] = useState<Framework>("react");
 
   useEffect(() => {
-    const updateFromURL = () => {
+    const syncFromUrl = () => {
       const params = new URLSearchParams(window.location.hash.split("?")[1]);
       const type = params.get("type");
       if (type && FRAMEWORKS.includes(type as Framework)) {
@@ -82,23 +84,20 @@ export function useFrameworkState(): [
       }
     };
 
-    updateFromURL();
-
-    const handleHashChange = () => {
-      updateFromURL();
-    };
-
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    syncFromUrl();
+    window.addEventListener("hashchange", syncFromUrl);
+    return () => window.removeEventListener("hashchange", syncFromUrl);
   }, []);
 
   const updateFramework = (newFramework: Framework) => {
     setFramework(newFramework);
-
     const currentHash = window.location.hash.split("?")[0];
-    const newURL = `${currentHash}?type=${newFramework}`;
-    window.history.replaceState(null, "", newURL);
+    window.history.replaceState(
+      null,
+      "",
+      `${currentHash}?type=${newFramework}`
+    );
   };
 
   return [framework, updateFramework];
-}
+};

@@ -11,25 +11,25 @@ import { DynamicIsland } from "@/components/dynamic-island";
 const PRESETS: readonly LoaderPreset[] = [
   {
     id: "wave-lr",
-    name: "Wave Left -> Right",
+    name: "Wave Left → Right",
     description: "Horizontal flowing animation from left to right",
     color: "#3b82f6",
   },
   {
     id: "wave-rl",
-    name: "Wave Right -> Left",
+    name: "Wave Right → Left",
     description: "Horizontal flowing animation from right to left",
     color: "#06b6d4",
   },
   {
     id: "wave-tb",
-    name: "Wave Top -> Bottom",
+    name: "Wave Top → Bottom",
     description: "Vertical flowing animation from top to bottom",
     color: "#8b5cf6",
   },
   {
     id: "wave-bt",
-    name: "Wave Bottom -> Top",
+    name: "Wave Bottom → Top",
     description: "Vertical flowing animation from bottom to top",
     color: "#ec4899",
   },
@@ -59,9 +59,9 @@ const PRESETS: readonly LoaderPreset[] = [
   },
 ] as const;
 
-export function LoaderDemo() {
+export const LoaderDemo = () => {
   const [activePreset, setActivePreset] = useState(PRESETS[0]);
-  const handleSelectPreset = useCallback((preset: LoaderPreset) => {
+  const handleSelect = useCallback((preset: LoaderPreset) => {
     setActivePreset(preset);
   }, []);
 
@@ -79,10 +79,7 @@ export function LoaderDemo() {
         </DynamicIsland>
       </div>
 
-      <AnimationSelector
-        onSelectPreset={handleSelectPreset}
-        presets={PRESETS}
-      />
+      <AnimationSelector onSelectPreset={handleSelect} presets={PRESETS} />
     </>
   );
-}
+};

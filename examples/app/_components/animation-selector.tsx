@@ -16,13 +16,13 @@ interface AnimationSelectorProps extends ComponentProps<"div"> {
   onSelectPreset: (preset: LoaderPreset) => void;
 }
 
-export function AnimationSelector({
+export const AnimationSelector = ({
   presets,
   onSelectPreset,
   className,
   ...props
-}: AnimationSelectorProps) {
-  const handleSelectPreset = (preset: LoaderPreset) => {
+}: AnimationSelectorProps) => {
+  const handleSelect = (preset: LoaderPreset) => {
     toast.success(`\`${preset.name}\` Selected`);
     onSelectPreset(preset);
   };
@@ -43,7 +43,7 @@ export function AnimationSelector({
               "hover:bg-neutral-50 active:scale-[0.98] active:bg-neutral-100"
             )}
             key={preset.id}
-            onClick={() => handleSelectPreset(preset)}
+            onClick={() => handleSelect(preset)}
             type="button"
           >
             {preset.id}
@@ -52,4 +52,4 @@ export function AnimationSelector({
       </div>
     </div>
   );
-}
+};

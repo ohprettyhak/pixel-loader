@@ -13,22 +13,22 @@ interface FrameworkProviderProps {
   usageBlocks: Record<Framework, ReactNode>;
 }
 
-export function FrameworkProvider({
+export const FrameworkProvider = ({
   installBlocks,
   usageBlocks,
-}: FrameworkProviderProps) {
-  const [framework, setFramework] = useFrameworkState();
+}: FrameworkProviderProps) => {
+  const [activeFramework, setActiveFramework] = useFrameworkState();
 
   return (
     <div className="relative">
       <FrameworkSidebar
-        activeFramework={framework}
-        onFrameworkChange={setFramework}
+        activeFramework={activeFramework}
+        onFrameworkChange={setActiveFramework}
       />
 
       <div className="w-full">
         <section id="installation">
-          <a className="group" href={`#installation?type=${framework}`}>
+          <a className="group" href={`#installation?type=${activeFramework}`}>
             <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
               Installation
             </h2>
@@ -37,14 +37,14 @@ export function FrameworkProvider({
             Install the package using your preferred package manager.
           </p>
           <div className="mt-4">
-            <InstallTabs codeBlocks={installBlocks[framework]} />
+            <InstallTabs codeBlocks={installBlocks[activeFramework]} />
           </div>
         </section>
 
         <hr className="my-12 border-divider" />
 
         <section id="usage">
-          <a className="group" href={`#usage?type=${framework}`}>
+          <a className="group" href={`#usage?type=${activeFramework}`}>
             <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
               Usage
             </h2>
@@ -52,9 +52,9 @@ export function FrameworkProvider({
           <p className="mt-2 text-sm text-text-secondary">
             Import and use the PixelLoader component in your application.
           </p>
-          <div className="mt-4">{usageBlocks[framework]}</div>
+          <div className="mt-4">{usageBlocks[activeFramework]}</div>
         </section>
       </div>
     </div>
   );
-}
+};

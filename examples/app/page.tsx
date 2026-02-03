@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { CodeBlock } from "@/app/_components/code-block";
 import { FrameworkProvider } from "@/app/_components/framework-provider";
 import type { Framework } from "@/app/_components/framework-sidebar";
@@ -108,7 +109,7 @@ export default async function Page() {
         return [framework, blocks];
       })
     )
-  ) as Record<Framework, Record<"npm" | "pnpm" | "yarn", React.ReactNode>>;
+  ) as Record<Framework, Record<"npm" | "pnpm" | "yarn", ReactNode>>;
 
   const usageBlocks = Object.fromEntries(
     await Promise.all(

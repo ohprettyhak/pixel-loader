@@ -6,14 +6,14 @@ interface CopyButtonProps {
   code: string;
 }
 
-export function CopyButton({ code }: CopyButtonProps) {
-  const [copied, setCopied] = useState(false);
+export const CopyButton = ({ code }: CopyButtonProps) => {
+  const [isCopied, setIsCopied] = useState(false);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
     } catch (error) {
       console.error("Failed to copy code:", error);
     }
@@ -25,7 +25,7 @@ export function CopyButton({ code }: CopyButtonProps) {
       onClick={handleCopy}
       type="button"
     >
-      {copied ? "Copied!" : "Copy"}
+      {isCopied ? "Copied!" : "Copy"}
     </button>
   );
-}
+};
