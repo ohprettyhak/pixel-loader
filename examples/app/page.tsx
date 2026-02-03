@@ -35,15 +35,12 @@ export default async function Page() {
         3x3 cell loading indicator
       </p>
 
-      {/* Demo Section */}
       <section className="mt-12">
         <LoaderDemo />
       </section>
 
-      {/* Divider */}
       <hr className="my-12 border-divider" />
 
-      {/* Installation Section */}
       <section id="installation">
         <a className="group" href="#installation">
           <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
@@ -58,10 +55,8 @@ export default async function Page() {
         </div>
       </section>
 
-      {/* Divider */}
       <hr className="my-12 border-divider" />
 
-      {/* Usage Section */}
       <section id="usage">
         <a className="group" href="#usage">
           <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
