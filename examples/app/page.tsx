@@ -1,95 +1,76 @@
-"use client";
+import { CodeBlock } from "@/components/code-block";
+import { InstallTabs } from "@/components/install-tabs";
+import { LoaderDemo } from "@/components/loader-demo";
 
-import { PixelLoader } from "@pixel-loader/react";
-import { useCallback, useState } from "react";
-import { DynamicIsland } from "@/components/dynamic-island";
-import type { LoaderPreset } from "@/components/preset-grid";
-import AnimationSelector from "@/components/preset-grid";
+const INSTALL_COMMANDS = {
+  npm: "npm install @pixel-loader/react",
+  pnpm: "pnpm add @pixel-loader/react",
+  yarn: "yarn add @pixel-loader/react",
+} as const;
 
-const PRESETS: readonly LoaderPreset[] = [
-  {
-    id: "wave-lr",
-    name: "Wave Left → Right",
-    description: "Horizontal flowing animation from left to right",
-    color: "#3b82f6",
-  },
-  {
-    id: "wave-rl",
-    name: "Wave Right → Left",
-    description: "Horizontal flowing animation from right to left",
-    color: "#06b6d4",
-  },
-  {
-    id: "wave-tb",
-    name: "Wave Top → Bottom",
-    description: "Vertical flowing animation from top to bottom",
-    color: "#8b5cf6",
-  },
-  {
-    id: "wave-bt",
-    name: "Wave Bottom → Top",
-    description: "Vertical flowing animation from bottom to top",
-    color: "#ec4899",
-  },
-  {
-    id: "diagonal",
-    name: "Diagonal Flow",
-    description: "Cascading animation from top-left to bottom-right",
-    color: "#f97316",
-  },
-  {
-    id: "center-out",
-    name: "Center Out",
-    description: "Expanding animation from center to edges",
-    color: "#eab308",
-  },
-  {
-    id: "spiral",
-    name: "Spiral",
-    description: "Rotating spiral pattern from center outward",
-    color: "#22c55e",
-  },
-  {
-    id: "corners",
-    name: "Corners",
-    description: "Four corners pulse inward simultaneously",
-    color: "#ef4444",
-  },
-] as const;
+const USAGE_CODE = `import { PixelLoader } from "@pixel-loader/react";
 
-const Page = () => {
-  const [activePreset, setActivePreset] = useState(PRESETS[0]);
-  const handleSelectPreset = useCallback((preset: LoaderPreset) => {
-    setActivePreset(preset);
-  }, []);
+export function MyComponent() {
+  return (
+    <PixelLoader
+      preset="wave-lr"
+      color="#3b82f6"
+    />
+  );
+}`;
+
+export default async function Page() {
+  const installCodeBlocks = {
+    npm: <CodeBlock code={INSTALL_COMMANDS.npm} language="bash" />,
+    pnpm: <CodeBlock code={INSTALL_COMMANDS.pnpm} language="bash" />,
+    yarn: <CodeBlock code={INSTALL_COMMANDS.yarn} language="bash" />,
+  };
 
   return (
     <>
-      <h1 className="font-semibold font-serif text-neutral-950 text-xl md:text-2xl">
+      <h1 className="font-semibold font-serif text-text-primary text-xl md:text-2xl">
         pixel-loader
       </h1>
-      <p className="mt-1 font-normal text-[15px] text-neutral-600">
+      <p className="mt-1 font-normal text-[15px] text-text-secondary">
         3x3 cell loading indicator
       </p>
 
-      <div className="mt-12 flex w-full flex-col items-center justify-center gap-8 rounded-xl border border-neutral-200 bg-white p-8">
-        <DynamicIsland>
-          <div className="flex size-3 items-center justify-center">
-            <PixelLoader
-              color={activePreset.color}
-              preset={activePreset.id as LoaderPreset["id"]}
-            />
-          </div>
-          <p className="font-medium text-white text-xs">Ring</p>
-        </DynamicIsland>
-      </div>
+      {/* Demo Section */}
+      <section className="mt-12">
+        <LoaderDemo />
+      </section>
 
-      <AnimationSelector
-        onSelectPreset={handleSelectPreset}
-        presets={PRESETS}
-      />
+      {/* Divider */}
+      <hr className="my-12 border-divider" />
+
+      {/* Installation Section */}
+      <section>
+        <h2 className="font-semibold font-serif text-lg text-text-primary">
+          Installation
+        </h2>
+        <p className="mt-2 text-sm text-text-secondary">
+          Install the package using your preferred package manager.
+        </p>
+        <div className="mt-4">
+          <InstallTabs codeBlocks={installCodeBlocks} />
+        </div>
+      </section>
+
+      {/* Divider */}
+      <hr className="my-12 border-divider" />
+
+      {/* Usage Section */}
+      <section>
+        <h2 className="font-semibold font-serif text-lg text-text-primary">
+          Usage
+        </h2>
+        <p className="mt-2 text-sm text-text-secondary">
+          Import and use the PixelLoader component in your React application.
+        </p>
+        <div className="mt-4">
+          <CodeBlock code={USAGE_CODE} language="tsx" />
+        </div>
+      </section>
     </>
   );
-};
-
-export default Page;
+}
