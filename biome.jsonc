@@ -7,11 +7,25 @@
   ],
   "overrides": [
     {
+      "includes": ["packages/**/*"],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noBarrelFile": "off"
+          },
+          "style": {
+            "noExportedImports": "off"
+          }
+        }
+      }
+    },
+    {
       "includes": ["examples/**/*"],
       "linter": {
         "rules": {
           "suspicious": {
-            "noReactSpecificProps": "off"
+            "noReactSpecificProps": "off",
+            "noArrayIndexKey": "off"
           },
           "correctness": {
             "noUnusedVariables": "warn"

@@ -1,24 +1,24 @@
 import type { SvelteComponent } from "svelte";
-import type { PresetName } from "@pixel-loader/core";
 
 export interface PixelLoaderProps {
-  preset?: PresetName;
-  presetDelays?: string;
-  presetDuration?: number;
   delayPattern?: number[];
   size?: number;
   color?: string;
   borderRadius?: number;
   isAnimating?: boolean;
-  shadowBlur?: number;
-  shadowColor?: string;
+  preset?:
+    | "wave-lr"
+    | "wave-rl"
+    | "wave-tb"
+    | "wave-bt"
+    | "diagonal"
+    | "center-out"
+    | "spiral"
+    | "corners";
 }
 
 export default class PixelLoader extends SvelteComponent<PixelLoaderProps> {
   $$prop_def: PixelLoaderProps;
-  $$events_def: {};
-  $$slot_def: {};
+  $$events_def: Record<string, never>;
+  $$slot_def: Record<string, never>;
 }
-
-export type { PresetName };
-export { presets } from "@pixel-loader/core";

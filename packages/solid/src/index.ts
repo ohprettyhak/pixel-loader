@@ -1,34 +1,31 @@
-import type { PresetName } from "@pixel-loader/core";
-
-export type { PresetName, presets } from "@pixel-loader/core";
-
 export interface PixelLoaderProps {
-  preset?: PresetName;
-  presetDelays?: string;
-  presetDuration?: number;
+  preset?:
+    | "wave-lr"
+    | "wave-rl"
+    | "wave-tb"
+    | "wave-bt"
+    | "diagonal"
+    | "center-out"
+    | "spiral"
+    | "corners";
   delayPattern?: number[];
   size?: number;
   color?: string;
   borderRadius?: number;
   isAnimating?: boolean;
-  shadowBlur?: number;
-  shadowColor?: string;
 }
 
 export interface PixelLoaderElement extends HTMLElement {
-  preset?: PresetName;
-  presetDelays?: string;
-  presetDuration?: number;
+  preset?: string;
   delayPattern?: number[];
   size?: number;
   color?: string;
   borderRadius?: number;
   isAnimating?: boolean;
-  shadowBlur?: number;
-  shadowColor?: string;
 }
 
 declare module "solid-js" {
+  // biome-ignore lint/style/noNamespace: JSX module augmentation requires namespace
   namespace JSX {
     interface IntrinsicElements {
       "pixel-loader": PixelLoaderProps;
@@ -36,4 +33,4 @@ declare module "solid-js" {
   }
 }
 
-export { PixelLoader } from "./Component";
+export { PixelLoader } from "./component";

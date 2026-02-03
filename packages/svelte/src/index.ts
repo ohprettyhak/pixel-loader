@@ -1,20 +1,20 @@
-import type { PresetName } from "@pixel-loader/core";
-import { presets } from "@pixel-loader/core";
-import PixelLoader from "./PixelLoader.svelte";
+import PixelLoader from "./pixel-loader.svelte";
 
 export interface PixelLoaderProps {
-  preset?: PresetName;
-  presetDelays?: string;
-  presetDuration?: number;
+  preset?:
+    | "wave-lr"
+    | "wave-rl"
+    | "wave-tb"
+    | "wave-bt"
+    | "diagonal"
+    | "center-out"
+    | "spiral"
+    | "corners";
   delayPattern?: number[];
   size?: number;
   color?: string;
   borderRadius?: number;
   isAnimating?: boolean;
-  shadowBlur?: number;
-  shadowColor?: string;
 }
 
 export { PixelLoader };
-export type { PresetName };
-export { presets };
