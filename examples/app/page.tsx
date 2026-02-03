@@ -1,14 +1,33 @@
-import { CodeBlock } from "@/components/code-block";
-import { InstallTabs } from "@/components/install-tabs";
-import { LoaderDemo } from "@/components/loader-demo";
+import { CodeBlock } from "@/app/_components/code-block";
+import { FrameworkProvider } from "@/app/_components/framework-provider";
+import type { Framework } from "@/app/_components/framework-sidebar";
+import { LoaderDemo } from "@/app/_components/loader-demo";
 
 const INSTALL_COMMANDS = {
-  npm: "npm install @pixel-loader/react",
-  pnpm: "pnpm add @pixel-loader/react",
-  yarn: "yarn add @pixel-loader/react",
+  react: {
+    npm: "npm install @pixel-loader/react",
+    pnpm: "pnpm add @pixel-loader/react",
+    yarn: "yarn add @pixel-loader/react",
+  },
+  vue: {
+    npm: "npm install @pixel-loader/vue",
+    pnpm: "pnpm add @pixel-loader/vue",
+    yarn: "yarn add @pixel-loader/vue",
+  },
+  solid: {
+    npm: "npm install @pixel-loader/solid",
+    pnpm: "pnpm add @pixel-loader/solid",
+    yarn: "yarn add @pixel-loader/solid",
+  },
+  svelte: {
+    npm: "npm install @pixel-loader/svelte",
+    pnpm: "pnpm add @pixel-loader/svelte",
+    yarn: "yarn add @pixel-loader/svelte",
+  },
 } as const;
 
-const USAGE_CODE = `import { PixelLoader } from "@pixel-loader/react";
+const USAGE_CODE = {
+  react: `import { PixelLoader } from "@pixel-loader/react";
 
 export function MyComponent() {
   return (
@@ -17,14 +36,94 @@ export function MyComponent() {
       color="#3b82f6"
     />
   );
-}`;
+}`,
+  vue: `<script setup lang="ts">
+import { PixelLoader } from "@pixel-loader/vue";
+</script>
+
+<template>
+  <PixelLoader
+    preset="wave-lr"
+    color="#3b82f6"
+  />
+</template>`,
+  solid: `import "@pixel-loader/solid";
+
+export function MyComponent() {
+  return (
+    <pixel-loader
+      preset="wave-lr"
+      color="#3b82f6"
+    />
+  );
+}`,
+  svelte: `<script lang="ts">
+import { PixelLoader } from "@pixel-loader/svelte";
+</script>
+
+<PixelLoader
+  preset="wave-lr"
+  color="#3b82f6"
+/>`,
+};
+
+const getLanguage = (fw: Framework): string => {
+  switch (fw) {
+    case "react":
+    case "solid":
+      return "tsx";
+    case "vue":
+      return "vue";
+    case "svelte":
+      return "svelte";
+    default:
+      return "tsx";
+  }
+};
 
 export default async function Page() {
-  const installCodeBlocks = {
-    npm: <CodeBlock code={INSTALL_COMMANDS.npm} language="bash" />,
-    pnpm: <CodeBlock code={INSTALL_COMMANDS.pnpm} language="bash" />,
-    yarn: <CodeBlock code={INSTALL_COMMANDS.yarn} language="bash" />,
-  };
+  // Pre-render all CodeBlocks for all frameworks (server-side)
+  const frameworks: Framework[] = ["react", "vue", "solid", "svelte"];
+
+  const installBlocks = Object.fromEntries(
+    await Promise.all(
+      frameworks.map(async (framework) => {
+        const blocks = {
+          npm: (
+            <CodeBlock code={INSTALL_COMMANDS[framework].npm} language="bash" />
+          ),
+          pnpm: (
+            <CodeBlock
+              code={INSTALL_COMMANDS[framework].pnpm}
+              language="bash"
+            />
+          ),
+          yarn: (
+            <CodeBlock
+              code={INSTALL_COMMANDS[framework].yarn}
+              language="bash"
+            />
+          ),
+        };
+        return [framework, blocks];
+      })
+    )
+  ) as Record<Framework, Record<"npm" | "pnpm" | "yarn", React.ReactNode>>;
+
+  const usageBlocks = Object.fromEntries(
+    await Promise.all(
+      frameworks.map(async (framework) => {
+        const block = (
+          <CodeBlock
+            code={USAGE_CODE[framework]}
+            key={framework}
+            language={getLanguage(framework)}
+          />
+        );
+        return [framework, block];
+      })
+    )
+  ) as Record<Framework, React.ReactNode>;
 
   return (
     <>
@@ -41,35 +140,10 @@ export default async function Page() {
 
       <hr className="my-12 border-divider" />
 
-      <section id="installation">
-        <a className="group" href="#installation">
-          <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
-            Installation
-          </h2>
-        </a>
-        <p className="mt-2 text-sm text-text-secondary">
-          Install the package using your preferred package manager.
-        </p>
-        <div className="mt-4">
-          <InstallTabs codeBlocks={installCodeBlocks} />
-        </div>
-      </section>
-
-      <hr className="my-12 border-divider" />
-
-      <section id="usage">
-        <a className="group" href="#usage">
-          <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
-            Usage
-          </h2>
-        </a>
-        <p className="mt-2 text-sm text-text-secondary">
-          Import and use the PixelLoader component in your React application.
-        </p>
-        <div className="mt-4">
-          <CodeBlock code={USAGE_CODE} language="tsx" />
-        </div>
-      </section>
+      <FrameworkProvider
+        installBlocks={installBlocks}
+        usageBlocks={usageBlocks}
+      />
     </>
   );
 }

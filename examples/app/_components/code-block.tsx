@@ -1,5 +1,5 @@
 import { codeToHtml } from "shiki";
-import { CopyButton } from "./copy-button";
+import { CopyButton } from "@/app/_components/copy-button";
 
 interface CodeBlockProps {
   code: string;

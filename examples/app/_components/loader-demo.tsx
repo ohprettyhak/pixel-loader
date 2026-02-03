@@ -2,9 +2,11 @@
 
 import { PixelLoader } from "@pixel-loader/react";
 import { useCallback, useState } from "react";
+import {
+  AnimationSelector,
+  type LoaderPreset,
+} from "@/app/_components/animation-selector";
 import { DynamicIsland } from "@/components/dynamic-island";
-import type { LoaderPreset } from "@/components/preset-grid";
-import AnimationSelector from "@/components/preset-grid";
 
 const PRESETS: readonly LoaderPreset[] = [
   {

@@ -1,8 +1,10 @@
+"use client";
+
 import type { ComponentProps } from "react";
 import { toast } from "sonner";
 import { twMerge } from "tailwind-merge";
 
-interface LoaderPreset {
+export interface LoaderPreset {
   id: string;
   name: string;
   description: string;
@@ -14,12 +16,12 @@ interface AnimationSelectorProps extends ComponentProps<"div"> {
   onSelectPreset: (preset: LoaderPreset) => void;
 }
 
-const AnimationSelector = ({
+export function AnimationSelector({
   presets,
   onSelectPreset,
   className,
   ...props
-}: AnimationSelectorProps) => {
+}: AnimationSelectorProps) {
   const handleSelectPreset = (preset: LoaderPreset) => {
     toast.success(`\`${preset.name}\` Selected`);
     onSelectPreset(preset);
@@ -50,7 +52,4 @@ const AnimationSelector = ({
       </div>
     </div>
   );
-};
-export default AnimationSelector;
-
-export type { LoaderPreset };
+}
