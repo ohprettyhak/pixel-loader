@@ -91,11 +91,11 @@ export const useFrameworkState = (): [
 
   const updateFramework = (newFramework: Framework) => {
     setFramework(newFramework);
-    const currentHash = window.location.hash.split("?")[0];
+    const hashWithoutParams = window.location.hash.split("?")[0] || "#";
     window.history.replaceState(
       null,
       "",
-      `${currentHash}?type=${newFramework}`
+      `${window.location.pathname}${hashWithoutParams}?type=${newFramework}`
     );
   };
 
