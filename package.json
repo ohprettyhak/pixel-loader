@@ -15,10 +15,15 @@
     "typecheck": "turbo run typecheck",
     "clean": "turbo run clean && rm -rf node_modules",
     "check": "ultracite check",
-    "fix": "ultracite fix"
+    "fix": "ultracite fix",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish",
+    "release": "turbo run build --filter=!examples && changeset publish"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.13",
+    "@changesets/cli": "^2.29.8",
     "@types/node": "^20.19.30",
     "tsup": "^8.5.1",
     "turbo": "^2.8.1",

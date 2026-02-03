@@ -29,7 +29,7 @@ export const FrameworkProvider = ({
       <div className="w-full">
         <section id="installation">
           <a className="group" href={`#installation?type=${activeFramework}`}>
-            <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
+            <h2 className="w-fit font-semibold font-serif text-lg text-text-primary group-hover:underline">
               Installation
             </h2>
           </a>
@@ -45,7 +45,7 @@ export const FrameworkProvider = ({
 
         <section id="usage">
           <a className="group" href={`#usage?type=${activeFramework}`}>
-            <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
+            <h2 className="w-fit font-semibold font-serif text-lg text-text-primary group-hover:underline">
               Usage
             </h2>
           </a>
