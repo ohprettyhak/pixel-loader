@@ -44,10 +44,12 @@ export default async function Page() {
       <hr className="my-12 border-divider" />
 
       {/* Installation Section */}
-      <section>
-        <h2 className="font-semibold font-serif text-lg text-text-primary">
-          Installation
-        </h2>
+      <section id="installation">
+        <a className="group" href="#installation">
+          <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
+            Installation
+          </h2>
+        </a>
         <p className="mt-2 text-sm text-text-secondary">
           Install the package using your preferred package manager.
         </p>
@@ -60,10 +62,12 @@ export default async function Page() {
       <hr className="my-12 border-divider" />
 
       {/* Usage Section */}
-      <section>
-        <h2 className="font-semibold font-serif text-lg text-text-primary">
-          Usage
-        </h2>
+      <section id="usage">
+        <a className="group" href="#usage">
+          <h2 className="font-semibold font-serif text-lg text-text-primary group-hover:underline">
+            Usage
+          </h2>
+        </a>
         <p className="mt-2 text-sm text-text-secondary">
           Import and use the PixelLoader component in your React application.
         </p>

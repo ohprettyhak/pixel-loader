@@ -17,7 +17,7 @@ export function InstallTabs({ codeBlocks }: InstallTabsProps) {
       <div className="mb-3 flex gap-1">
         {PACKAGE_MANAGERS.map((pm) => (
           <button
-            className={`cursor-pointer rounded-md px-2 py-0.5 font-mono text-xs transition-colors ${
+            className={`cursor-pointer rounded-md px-2 py-1 font-medium font-mono text-xs transition-colors ${
               activeTab === pm
                 ? "bg-text-primary text-white"
                 : "text-text-secondary hover:bg-neutral-100"
