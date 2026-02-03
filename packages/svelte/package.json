@@ -1,6 +1,6 @@
 {
   "name": "@pixel-loader/svelte",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "Svelte wrapper for PixelLoader web component",
   "main": "./dist/index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@pixel-loader/core",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "Core LitElement web component for 3x3 loading indicator",
   "main": "./dist/index.js",
