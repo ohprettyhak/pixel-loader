@@ -7,4 +7,12 @@ export default defineConfig({
   clean: true,
   target: "es2022",
   publicDir: false,
+  external: ["./pixel-loader.svelte"],
+  noExternal: ["@pixel-loader/core"],
+  esbuildOptions(options) {
+    options.loader = {
+      ...options.loader,
+      ".svelte": "copy",
+    };
+  },
 });

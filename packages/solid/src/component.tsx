@@ -1,18 +1,29 @@
-import type { JSX } from "solid-js";
-import type { PixelLoaderProps } from "./index";
+import "@pixel-loader/core";
+import { createEffect, onMount } from "solid-js";
+import type { PixelLoaderElement, PixelLoaderProps } from "./index";
 
 export const PixelLoader = (props: PixelLoaderProps) => {
-  const { size, color, borderRadius, isAnimating, delayPattern, preset } =
-    props;
+  let ref: PixelLoaderElement | undefined;
 
-  const attributes: JSX.IntrinsicElements["pixel-loader"] = {
-    preset,
-    size,
-    color,
-    "border-radius": borderRadius,
-    "is-animating": isAnimating,
-    "delay-pattern": delayPattern ? JSON.stringify(delayPattern) : undefined,
-  } as JSX.IntrinsicElements["pixel-loader"];
+  onMount(() => {
+    createEffect(() => {
+      if (!ref) return;
+      if (props.preset !== undefined) ref.preset = props.preset;
+      if (props.size !== undefined) ref.size = props.size;
+      if (props.color !== undefined) ref.color = props.color;
+      if (props.borderRadius !== undefined)
+        ref.borderRadius = props.borderRadius;
+      if (props.isAnimating !== undefined) ref.isAnimating = props.isAnimating;
+      if (props.delayPattern !== undefined)
+        ref.delayPattern = props.delayPattern;
+    });
+  });
 
-  return <pixel-loader {...attributes} />;
+  return (
+    <pixel-loader
+      ref={(el) => {
+        ref = el as unknown as PixelLoaderElement;
+      }}
+    />
+  );
 };
