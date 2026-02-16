@@ -65,7 +65,7 @@ export default defineConfig({
 })`,
     },
     dependencies: {
-      "@pixel-loader/vue": "^0.0.1",
+      "@pixel-loader/vue": "^0.0.2",
     },
   },
   solid: {
@@ -83,7 +83,7 @@ export default function App() {
 }`,
     },
     dependencies: {
-      "@pixel-loader/solid": "^0.0.1",
+      "@pixel-loader/solid": "^0.0.2",
       "solid-js": "^1.9.0",
     },
   },
@@ -100,7 +100,7 @@ export default function App() {
 </div>`,
     },
     dependencies: {
-      "@pixel-loader/svelte": "^0.0.1",
+      "@pixel-loader/svelte": "^0.0.2",
       svelte: "^4.2.0",
     },
   },
