@@ -38,9 +38,9 @@
     "@pixel-loader/core": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^20.19.30",
+    "@types/node": "^20.19.33",
     "typescript": "^5.9.3",
-    "vue": "^3.5.27",
+    "vue": "^3.5.28",
     "vue-tsc": "^1.8.27"
   },
   "publishConfig": {
