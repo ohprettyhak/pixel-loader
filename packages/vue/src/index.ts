@@ -46,15 +46,24 @@ export const PixelLoader = defineComponent({
   setup(props, { attrs }) {
     return () => {
       const ceProps: Record<string, unknown> = {};
-      if (props.preset !== undefined) ceProps.preset = props.preset;
-      if (props.size !== undefined) ceProps.size = props.size;
-      if (props.color !== undefined) ceProps.color = props.color;
-      if (props.borderRadius !== undefined)
+      if (props.preset !== undefined) {
+        ceProps.preset = props.preset;
+      }
+      if (props.size !== undefined) {
+        ceProps.size = props.size;
+      }
+      if (props.color !== undefined) {
+        ceProps.color = props.color;
+      }
+      if (props.borderRadius !== undefined) {
         ceProps.borderRadius = props.borderRadius;
-      if (props.isAnimating !== undefined)
+      }
+      if (props.isAnimating !== undefined) {
         ceProps.isAnimating = props.isAnimating;
-      if (props.delayPattern !== undefined)
+      }
+      if (props.delayPattern !== undefined) {
         ceProps.delayPattern = props.delayPattern;
+      }
       return h("pixel-loader", { ...ceProps, ...attrs });
     };
   },

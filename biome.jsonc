@@ -20,6 +20,16 @@
       }
     },
     {
+      "includes": ["**/*.svelte"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useFilenamingConvention": "off"
+          }
+        }
+      }
+    },
+    {
       "includes": ["examples/**/*"],
       "linter": {
         "rules": {

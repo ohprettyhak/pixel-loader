@@ -15,6 +15,7 @@ export let borderRadius: number | undefined = undefined;
 // biome-ignore lint/style/useConst: Svelte requires export let for props
 export let isAnimating: boolean | undefined = undefined;
 
+// biome-ignore lint/suspicious/noUnassignedVariables: assigned via Svelte bind:this
 let ref: HTMLElement | undefined;
 
 interface PixelLoaderElement {
@@ -27,14 +28,28 @@ interface PixelLoaderElement {
 }
 
 function syncProperties() {
-  if (!ref) return;
+  if (!ref) {
+    return;
+  }
   const el = ref as unknown as PixelLoaderElement;
-  if (preset !== undefined) el.preset = preset;
-  if (size !== undefined) el.size = size;
-  if (color !== undefined) el.color = color;
-  if (borderRadius !== undefined) el.borderRadius = borderRadius;
-  if (isAnimating !== undefined) el.isAnimating = isAnimating;
-  if (delayPattern !== undefined) el.delayPattern = delayPattern;
+  if (preset !== undefined) {
+    el.preset = preset;
+  }
+  if (size !== undefined) {
+    el.size = size;
+  }
+  if (color !== undefined) {
+    el.color = color;
+  }
+  if (borderRadius !== undefined) {
+    el.borderRadius = borderRadius;
+  }
+  if (isAnimating !== undefined) {
+    el.isAnimating = isAnimating;
+  }
+  if (delayPattern !== undefined) {
+    el.delayPattern = delayPattern;
+  }
 }
 
 onMount(syncProperties);
