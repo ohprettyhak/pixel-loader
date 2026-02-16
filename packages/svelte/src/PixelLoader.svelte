@@ -9,21 +9,31 @@ export let delayPattern: number[] | undefined = undefined;
 // biome-ignore lint/style/useConst: Svelte requires export let for props
 export let size: number | undefined = undefined;
 // biome-ignore lint/style/useConst: Svelte requires export let for props
-export let color = "#3b82f6";
+export let color: string | undefined = undefined;
 // biome-ignore lint/style/useConst: Svelte requires export let for props
-export let borderRadius = 0;
+export let borderRadius: number | undefined = undefined;
 // biome-ignore lint/style/useConst: Svelte requires export let for props
-export let isAnimating = true;
+export let isAnimating: boolean | undefined = undefined;
 
 let ref: HTMLElement | undefined;
 
+interface PixelLoaderElement {
+  preset: string;
+  delayPattern?: number[];
+  size?: number;
+  color: string;
+  borderRadius: number;
+  isAnimating: boolean;
+}
+
 function syncProperties() {
   if (!ref) return;
-  const el = ref as unknown as {
-    borderRadius: number;
-    delayPattern?: number[];
-  };
-  el.borderRadius = borderRadius;
+  const el = ref as unknown as PixelLoaderElement;
+  if (preset !== undefined) el.preset = preset;
+  if (size !== undefined) el.size = size;
+  if (color !== undefined) el.color = color;
+  if (borderRadius !== undefined) el.borderRadius = borderRadius;
+  if (isAnimating !== undefined) el.isAnimating = isAnimating;
   if (delayPattern !== undefined) el.delayPattern = delayPattern;
 }
 
@@ -31,10 +41,4 @@ onMount(syncProperties);
 afterUpdate(syncProperties);
 </script>
 
-<pixel-loader
-  bind:this={ref}
-  {preset}
-  {size}
-  {color}
-  is-animating={isAnimating}
-></pixel-loader>
+<pixel-loader bind:this={ref}></pixel-loader>

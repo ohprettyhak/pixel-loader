@@ -23,7 +23,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rm -rf dist && mkdir -p dist && cp src/PixelLoader.svelte dist/PixelLoader.svelte && cp src/index.d.ts dist/index.d.ts && node -e \"const fs = require('fs'); fs.writeFileSync('dist/index.js', \\\"import '@pixel-loader/core';\\\\nexport { default as PixelLoader } from './PixelLoader.svelte';\\\\n\\\");\"",
+    "build": "node scripts/build.mjs",
     "dev": "pnpm build",
     "typecheck": "svelte-check --tsconfig ./tsconfig.json",
     "lint": "biome check ./src",
