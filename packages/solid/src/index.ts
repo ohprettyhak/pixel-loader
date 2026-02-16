@@ -28,7 +28,7 @@ declare module "solid-js" {
   // biome-ignore lint/style/noNamespace: JSX module augmentation requires namespace
   namespace JSX {
     interface IntrinsicElements {
-      "pixel-loader": PixelLoaderProps;
+      "pixel-loader": PixelLoaderProps & JSX.HTMLAttributes<HTMLElement>;
     }
   }
 }

@@ -1,4 +1,4 @@
-import PixelLoader from "./pixel-loader.svelte";
+import "@pixel-loader/core";
 
 export interface PixelLoaderProps {
   preset?:
@@ -17,4 +17,6 @@ export interface PixelLoaderProps {
   isAnimating?: boolean;
 }
 
-export { PixelLoader };
+// Re-export the Svelte component
+// When using bundlers with svelte support, they will resolve to the .svelte file via package.json exports
+export { default as PixelLoader } from "./PixelLoader.svelte";

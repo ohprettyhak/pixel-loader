@@ -1,0 +1,34 @@
+{
+  "name": "@pixel-loader/demo",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:react": "vite react",
+    "dev:vue": "vite vue",
+    "dev:solid": "vite solid",
+    "dev:svelte": "vite svelte"
+  },
+  "dependencies": {
+    "@pixel-loader/core": "workspace:*",
+    "@pixel-loader/react": "workspace:*",
+    "@pixel-loader/vue": "workspace:*",
+    "@pixel-loader/solid": "workspace:*",
+    "@pixel-loader/svelte": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "vue": "^3.5.13",
+    "solid-js": "^1.9.3",
+    "svelte": "^5.15.1"
+  },
+  "devDependencies": {
+    "vite": "^6.0.7",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "vite-plugin-solid": "^2.10.2",
+    "@sveltejs/vite-plugin-svelte": "^5.0.3",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "typescript": "^5.7.3"
+  }
+}
