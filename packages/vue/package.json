@@ -1,6 +1,6 @@
 {
   "name": "@pixel-loader/vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "Vue wrapper for PixelLoader web component",
   "main": "./dist/index.js",
