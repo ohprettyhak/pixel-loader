@@ -1,8 +1,8 @@
 {
   "name": "@pixel-loader/solid",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
-  "description": "Solid wrapper for PixelLoader web component",
+  "description": "Solid integration for PixelLoader web component",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

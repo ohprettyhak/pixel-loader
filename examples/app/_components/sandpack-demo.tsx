@@ -33,7 +33,7 @@ export default function App() {
 }`,
     },
     dependencies: {
-      "@pixel-loader/react": "^0.0.3",
+      "@pixel-loader/react": "^0.0.4",
     },
   },
   vue: {
@@ -65,25 +65,25 @@ export default defineConfig({
 })`,
     },
     dependencies: {
-      "@pixel-loader/vue": "^0.0.3",
+      "@pixel-loader/vue": "^0.0.4",
     },
   },
   solid: {
     template: "solid",
     files: {
-      "/App.tsx": `import { PixelLoader } from "@pixel-loader/solid";
+      "/App.tsx": `import "@pixel-loader/solid";
 
 export default function App() {
   return (
     <div style={{ padding: "40px", "font-family": "sans-serif" }}>
       <h1>Solid Demo</h1>
-      <PixelLoader preset="wave-lr" color="#3b82f6" size={48} />
+      <pixel-loader prop:preset="wave-lr" prop:color="#3b82f6" prop:size={48} />
     </div>
   );
 }`,
     },
     dependencies: {
-      "@pixel-loader/solid": "^0.0.3",
+      "@pixel-loader/solid": "^0.0.4",
       "solid-js": "^1.9.0",
     },
   },
@@ -100,7 +100,7 @@ export default function App() {
 </div>`,
     },
     dependencies: {
-      "@pixel-loader/svelte": "^0.0.3",
+      "@pixel-loader/svelte": "^0.0.4",
       svelte: "^4.2.0",
     },
   },
