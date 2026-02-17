@@ -71,7 +71,7 @@ export default defineConfig({
   solid: {
     template: "solid",
     files: {
-      "/App.tsx": `import "@pixel-loader/core";
+      "/App.tsx": `import "@pixel-loader/solid";
 
 export default function App() {
   return (
@@ -83,7 +83,7 @@ export default function App() {
 }`,
     },
     dependencies: {
-      "@pixel-loader/core": "^0.0.3",
+      "@pixel-loader/solid": "^0.0.3",
       "solid-js": "^1.9.0",
     },
   },
