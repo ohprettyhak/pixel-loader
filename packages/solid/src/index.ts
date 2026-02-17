@@ -1,3 +1,7 @@
+import "@pixel-loader/core";
+// biome-ignore lint/correctness/noUnusedImports: Required for declare module augmentation to resolve solid-js
+import type { JSX } from "solid-js";
+
 export interface PixelLoaderProps {
   preset?:
     | "wave-lr"
@@ -32,5 +36,3 @@ declare module "solid-js" {
     }
   }
 }
-
-export { PixelLoader } from "./component";
